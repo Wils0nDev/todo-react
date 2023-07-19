@@ -1,9 +1,9 @@
 # Repository of TODO in React.js
 
-¡Hola!
+¡Hello!
 
-En este repositorio encontrarás el código. 
-Para empezar solo debes clonar este repositorio (`git clone`), instalar sus dependencias (`npm i`) y ejecutar la aplicación (`npm start`).
+In this repository, you will find the code
+For to start, you just need clone this repository (`git clone`), install his dependencies (`npm i`) and run the application (`npm start`).
 
 
 ## Available Scripts
