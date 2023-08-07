@@ -1,0 +1,36 @@
+@import '../../assets/css/variables.scss';
+
+
+h2 {
+    margin-top: 1.4rem;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+
+        cursor: pointer;
+        min-height: 80px;
+        border-radius: 15px;
+        box-shadow: 5px 5px 30px 2px rgba(154,156,167,0.1);
+        margin-bottom: 1rem;
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        svg {
+            font-size: 25px;
+            padding: 0 1.5rem;
+        }
+
+        &.completed {
+            background-color: $green;
+            color: #fff;
+            font-weight: 700;
+        }
+    }
+}

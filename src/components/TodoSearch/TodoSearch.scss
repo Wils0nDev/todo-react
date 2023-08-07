@@ -1,0 +1,31 @@
+@import '../../assets/css/variables.scss';
+
+.input-container {
+    position: relative;
+
+    input {
+        width: 100%; 
+        padding: 12px 40px; 
+        margin: 8px 0; 
+        display: inline-block; 
+        border: 1px solid $text_thin; 
+        box-sizing: border-box; 
+        border-radius: 15px;
+        color: $text_thin;
+    }
+
+    ::placeholder {
+        color: $text_thin;
+    }
+
+    input:focus-visible {
+        border: 1px solid $text_thin; 
+        outline: none;
+    }
+
+    svg {
+        position: absolute;
+        left: 15px;
+        top: 25px;
+    }
+}

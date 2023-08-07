@@ -1,0 +1,116 @@
+@import './assets/css/variables.scss';
+
+header {
+    background-color: $background;
+    padding-top: 1.5rem;
+}
+
+
+
+#title {
+    background-color: $background;
+    padding: 2rem 0 5rem 0;
+    position: relative;
+    z-index: 0;
+}
+
+#list {
+    padding: 2rem 0;
+    background-color: #f8f8f9;
+    z-index: 1;
+
+}
+
+h2 {
+    color: #f2f2f2;
+    font-size: 25px;
+    span {
+        color: $primary;
+        font-size: 25px;
+        font-weight: 600; 
+    }
+}
+
+h1 {
+    color: #f2f2f2;
+    font-size: 40px;
+    span {
+        font-size: 40px;
+        font-weight: 700;
+        color: $accent;
+    }
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    border: 4px solid $accent;
+    box-shadow: 0px 0px 10px 0px #000000;
+}
+.developer-img{
+    width: 350px;
+    height: 350px;
+}
+.img-conteiner {
+    position: absolute;
+    left: 47%;
+    top: 350px;
+}
+.img-conteiner::before{
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: $accent;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    bottom: 0px;
+    right: 0px;
+    z-index: 999;
+    box-shadow: 0px 0px 10px 0px #000000;
+}
+
+
+.custom-shape-divider-bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(170% + 1.3px);
+    height: 90px;
+}
+
+.custom-shape-divider-bottom .shape-fill {
+    fill: #f8f8f9;
+    
+}
+
+.task-alert {
+    text-align: center;
+    font-size: 70px;
+    color: $accent;
+}
+
+.animate__animated.animate__slideInDown {
+    --animate-duration: 1s;
+  }
+
+.animate__animated.animate__slideInLeft{
+    --animate-duration: 3s;
+}
+
+  .animate__animated.animate__slideInUp{
+    --animate-duration: 0.5s;
+    
+  }
+    

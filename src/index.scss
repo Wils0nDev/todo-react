@@ -1,0 +1,36 @@
+@import './assets/css/variables.scss';
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: $text_body;
+    background-color: #fff;
+  }
+
+p, span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: $text_titles;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: $text_titles;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 600;
+  color: $text_titles;
+}
+
+button {
+  font-size: 18px;
+  font-weight: 600;
+  color: $text_titles;
+}
