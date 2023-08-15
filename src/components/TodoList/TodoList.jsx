@@ -5,7 +5,7 @@ import './TodoList.scss';
 function TodoList(props){
     return(
         <>
-            <h2>To do</h2>
+            <h2>Tareas</h2>
             <ul>
                 {props.children}
             </ul>

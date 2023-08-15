@@ -1,0 +1,52 @@
+@import '../../assets/css/variables.scss';
+
+.form-modal {
+
+    padding: 2rem;
+    h1 {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #000;
+    }
+    form {
+        label {
+            font-size: 20px;
+            font-weight: 600;
+            color: $text_titles;
+        }
+
+        input {
+            padding: 12px 5px;
+            border: 1px solid $text_thin; 
+            border-radius: 15px;
+            color: $text_thin;
+        }
+        input:focus {
+            border: 1px solid $text_thin; 
+            outline: none;
+            box-shadow: none;
+        }
+
+        button {
+            border-radius: 15px;
+            padding: 12px;
+
+            &.primary {
+                background-color: $backgroundDark;
+                width: 100%;
+                color: #fff;
+            }
+
+            &.secundary {
+                width: 100%;
+                color: #000;
+                margin-top: 20px;
+                border: 1px solid #000;
+            }
+        }
+    }
+    
+}

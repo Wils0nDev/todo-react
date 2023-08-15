@@ -11,7 +11,7 @@
         border: 1px solid $text_thin; 
         box-sizing: border-box; 
         border-radius: 15px;
-        color: $text_thin;
+        color: $color_focus;
     }
 
     ::placeholder {
@@ -19,7 +19,7 @@
     }
 
     input:focus-visible {
-        border: 1px solid $text_thin; 
+        border: 1px solid $text_titles; 
         outline: none;
     }
 

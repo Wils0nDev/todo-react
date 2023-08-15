@@ -1,5 +1,5 @@
 import "./App.scss";
-import { React } from "react";
+import  React  from "react";
 import devimg from './assets/svg/devimgdos.svg'
 
 import { TodoCounter } from "./components/TodoCounter/TodoCounter";
@@ -8,17 +8,41 @@ import { TodoList } from "./components/TodoList/TodoList";
 import { TodoItem } from "./components/TodoItem/TodoItem";
 import { CreateTodoButton } from "./components/CreateTodoButton/CreateTodoButton";
 import {TypeWork} from "./components/TypeWork/TypeWork";
+import { Modal } from "./components/UI/Modal/Modal";
+import { useModal } from "./components/UI/Modal/useModal";
+import { FormTodo } from "./components/FormTodo/FormTodo";
+
+
 function App() {
   //We create a list of todos
   const defaultTodo = [
     { text: "Filtro de busqueda de trabajadores", completed: true },
     { text: "Conexion con endpoint de trabajadores", completed: false },
-    { text: "Crear una tabla para listar el trabajador", completed: false },
+    { text: "Crear una tabla para listar el trabajador", completed: true },
     {
       text: "Crear diseño de modal para registrar un trabajador",
       completed: false,
     },
+    {
+      text: "Ya hicimos el front de trueclock",
+      completed: true,
+    }
   ];
+  const [todos, setTodos]= React.useState(defaultTodo);
+  const [serchValue, setSerchValue]= React.useState('');
+  const completedTodos = todos.filter((t)=>t.completed).length;
+  const totalTodos = todos.length;
+  const searchTodos = todos.filter((todo)=>{
+    return todo.text.includes(serchValue)
+  })
+
+  // const {
+   
+  //   CreateNewTask
+  // } = useTodo();
+  const { 
+    visible, setVisible 
+  } = useModal();
   return (
     < >
       <header >
@@ -26,7 +50,7 @@ function App() {
           {/* <div className='img-conteiner'>
                 <img alt='Wilson Vasquez' src={require('./assets/images/wilsondev4.jpg')} />
             </div> */}
-          <CreateTodoButton />
+          <CreateTodoButton setVisible={setVisible}/>
         </nav>
       </header>
       {/* "<></>" It's a way to render  a component without div  */}
@@ -42,10 +66,10 @@ function App() {
               <h1>
                  <TypeWork />
               </h1>
-              <h2>
+              <h2 className="description-profile">
                 Soy Programador <span> FullStack</span>
               </h2>
-              <TodoCounter totalTodos={25} todosCompleted={16} />
+              <TodoCounter todosCompleted={completedTodos} totalTodos={totalTodos}  />
             </div>
           </div>
           
@@ -79,12 +103,15 @@ function App() {
           <div className="container">
             {/* TodoSearch is our component for search the tasks completed and to do */}
 
-            <TodoSearch />
+            <TodoSearch 
+              serchValue={serchValue}
+              setSerchValue = {setSerchValue}
+            />
             {/* TodoList is our component for list the tasks completed and to do */}
             <TodoList>
               {/* TodoItem is our component for show each the tasks*/}
               {/* We traverse the list with map, to render a new list of components but with their properties */}
-              {defaultTodo.map((todo) => (
+              {searchTodos.map((todo) => (
                 <TodoItem
                   Item
                   key={todo.text}
@@ -95,6 +122,12 @@ function App() {
             </TodoList>
           </div>
         </section>
+       <Modal visible={visible}>
+       <FormTodo 
+                        setVisible={setVisible}
+                        // CreateNewTask={CreateNewTask}
+                    />   
+        </Modal>
       </main>
     </>
   );

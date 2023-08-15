@@ -3,6 +3,31 @@
 button {
     border: none;
     background: none;
-    color: $primary;
+    color: $text_titles;
     font-size: 30px;
+
+    &.CreateTodoButton{
+        background-color: $accent;
+        box-shadow: 0px 0px 15px 0px #FFF;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        bottom: 24px;
+        right: 24px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        width: 60px;
+        margin-bottom: 15px;
+        
+        transform: rotate(0);
+        transition: .3s ease;
+    }
+
+    &.CreateTodoButton:hover{
+        transform: rotate(224deg);
+    }
 }
+
