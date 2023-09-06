@@ -12,9 +12,9 @@ function CreateTodoButton({ setVisible }){
     }
     console.log(state)
 
-    // const TodoCreate = (event) => {
-    //     setVisible(true);
-    // };
+    const TodoCreate = (event) => {
+        setVisible(true);
+    };
 
 
     // const onCompletedTodo= () => {
@@ -23,7 +23,7 @@ function CreateTodoButton({ setVisible }){
     return(
         <button 
         className="CreateTodoButton"
-        onClick={clickTodo}
+        onClick={TodoCreate}
         type="button"
         
         >

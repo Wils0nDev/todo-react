@@ -11,30 +11,64 @@ import {TypeWork} from "./components/TypeWork/TypeWork";
 import { Modal } from "./components/UI/Modal/Modal";
 import { useModal } from "./components/UI/Modal/useModal";
 import { FormTodo } from "./components/FormTodo/FormTodo";
+import { useLocalStorage } from './custom/hooks/useLocalStorage';
+
+  //We create a list of todos
+  // const defaultTodo = [
+  //   { text: "Filtro de busqueda de trabajadores", completed: true },
+  //   { text: "Conexion con endpoint de trabajadores", completed: false },
+  //   { text: "Crear una tabla para listar el trabajador", completed: true },
+  //   {
+  //     text: "Crear diseño de modal para registrar un trabajador",
+  //     completed: false,
+  //   },
+  //   {
+  //     text: "Ya hicimos el front de trueclock",
+  //     completed: true,
+  //   }
+  // ];
+  // const defaultTodoString = JSON.stringify(defaultTodo);
+  // localStorage.setItem('TODOS_V1', defaultTodoString);
+  //localStorage.removeItem('TODOS_V1');
+
+//CustomHooks : 
+// --Un custom hook es una función que realiza cierta funcionalidad 
+// --Siempre tiene que empezar con "use"+nombreFuncion
+// --Puede ser compartido con distintos componentes.
 
 
 function App() {
-  //We create a list of todos
-  const defaultTodo = [
-    { text: "Filtro de busqueda de trabajadores", completed: true },
-    { text: "Conexion con endpoint de trabajadores", completed: false },
-    { text: "Crear una tabla para listar el trabajador", completed: true },
-    {
-      text: "Crear diseño de modal para registrar un trabajador",
-      completed: false,
-    },
-    {
-      text: "Ya hicimos el front de trueclock",
-      completed: true,
-    }
-  ];
-  const [todos, setTodos]= React.useState(defaultTodo);
+  const [todos, saveTodos]= useLocalStorage('TODOS_V1',[]);
   const [serchValue, setSerchValue]= React.useState('');
   const completedTodos = todos.filter((t)=>t.completed).length;
   const totalTodos = todos.length;
-  const searchTodos = todos.filter((todo)=>{
-    return todo.text.includes(serchValue)
+  const searchTodos = todos.filter(
+    (todo)=>{
+      const todoText = todo.text.toLowerCase();
+      const searchText = serchValue.toLowerCase();
+     return todoText.includes(searchText)
   })
+
+ 
+
+  const completeTodo=(text)=>{
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos[todoIndex].completed = true;
+    saveTodos(newTodos)
+  }
+ 
+  
+  const deletTodo=(text)=>{
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos.splice(todoIndex,1);
+    saveTodos(newTodos)
+  }
 
   // const {
    
@@ -117,6 +151,8 @@ function App() {
                   key={todo.text}
                   text={todo.text}
                   completed={todo.completed}
+                  onComplete={()=>completeTodo(todo.text)}
+                  onDelete={() => deletTodo(todo.text)}
                 />
               ))}
             </TodoList>

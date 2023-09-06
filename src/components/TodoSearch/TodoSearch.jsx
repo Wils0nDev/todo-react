@@ -8,7 +8,6 @@ function TodoSearch({serchValue,setSerchValue}){
 
     const filterTodo=(event)=>{
         setSerchValue(event.target.value)
-        console.log(event.target.value)
     }
     
     return(
