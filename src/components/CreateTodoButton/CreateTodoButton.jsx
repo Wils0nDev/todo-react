@@ -5,12 +5,11 @@ import './CreateTodoButton.scss'
 
 function CreateTodoButton({ setVisible }){
 
-    let [state, setState] = React.useState(0);
+    // let [state, setState] = React.useState(0);
 
-    const clickTodo = ()=>{
-        setState(state++)
-    }
-    console.log(state)
+    // const clickTodo = ()=>{
+    //     setState(state++)
+    // }
 
     const TodoCreate = (event) => {
         setVisible(true);
