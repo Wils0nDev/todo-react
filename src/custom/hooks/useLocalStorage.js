@@ -1,26 +1,40 @@
-import  React  from "react";
-export function useLocalStorage(itemName,initialValue){
-
-    const [item, setItem] = React.useState(initialValue);
-    const [loading, setLoading] = React.useState(true);
-    const [error, setError] = React.useState(false);
-    
-    React.useEffect(()=>{
-    let localStorageItem = localStorage.getItem(itemName);
-    let parseItem;
-
-      if(!localStorageItem){
-        localStorage.setItem(itemName, JSON.stringify(initialValue));
-        parseItem = initialValue;
-      }else{
-        parseItem = JSON.parse(localStorageItem)
-      }
-    });
-    
+import React from "react";
+function useLocalStorage(itemName, initialValue ) {
+  const [item, setItem] = React.useState(initialValue);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
+  React.useEffect(() => {
+    setTimeout(() => {
+      try {
+        let localStorageItem = localStorage.getItem(itemName);
+        let parseItem;
   
-    const saveItem = (newItem)=>{
-      localStorage.setItem(itemName,JSON.stringify(newItem));
-      setItem(newItem)
-    }
-    return [item,saveItem];
-  }
+        if (!localStorageItem) {
+          localStorage.setItem(itemName, JSON.stringify(initialValue));
+          parseItem = initialValue;
+        } else {
+          parseItem = JSON.parse(localStorageItem);
+          setItem(parseItem)
+        }
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        setError(true);
+      }
+    }, 2000);
+  },[itemName,initialValue]);
+
+  const saveItem = (newItem) => {
+    console.log(newItem)
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+  return {
+    item,
+    saveItem,
+    loading,
+    error,
+  };
+}
+
+export { useLocalStorage };
