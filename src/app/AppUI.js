@@ -6,7 +6,8 @@ import { TodoItem } from "../components/TodoItem";
 import { CreateTodoButton } from "../components/CreateTodoButton";
 import { TypeWork } from "../components/TypeWork";
 import { Modal } from "../components/UI/Modal/Modal";
-import { FormTodo } from "../components/FormTodo";
+import { FormTodo } from "../components/FormTodo"
+import {TodosEmpty, TodosErrors,TodosLoading} from "../components/TodosMessage/index"
 
 function AppUI({
   setVisible,
@@ -79,10 +80,15 @@ function AppUI({
             <TodoSearch serchValue={serchValue} setSerchValue={setSerchValue} />
             {/* TodoList is our component for list the tasks completed and to do */}
             <TodoList>
-              {loading && <p>Estamos cargando...</p>}
-              {error && <p>Desespérate, hubo un error...</p>}
+              {loading && 
+              <>
+              <TodosLoading/>
+              <TodosLoading/>
+              <TodosLoading/>
+              </>}
+              {error &&  <TodosErrors />}
               {!loading && searchedTodos.length === 0 && (
-                <p>Crea tu primer TODO!</p>
+                <TodosEmpty />
               )}
               {/* TodoItem is our component for show each the tasks*/}
               {/* We traverse the list with map, to render a new list of components but with their properties */}
