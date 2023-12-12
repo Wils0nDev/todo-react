@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Wils0nDev/todo-react/static/css/main.8726fae7.css",
-    "main.js": "/Wils0nDev/todo-react/static/js/main.2897c12c.js",
-    "static/media/wilsondev4.jpg": "/Wils0nDev/todo-react/static/media/wilsondev4.6d6b2136ba4b3cd7670e.jpg",
-    "static/media/devimgdos.svg": "/Wils0nDev/todo-react/static/media/devimgdos.e7c4cc2402e33b7985866ed4d23f89cc.svg",
-    "index.html": "/Wils0nDev/todo-react/index.html",
-    "static/media/delete.svg": "/Wils0nDev/todo-react/static/media/delete.64cabedb850ec69635e23b23800e330f.svg",
-    "static/media/check.svg": "/Wils0nDev/todo-react/static/media/check.32e47e1ec32e6352ef563a10c26d840a.svg",
-    "main.8726fae7.css.map": "/Wils0nDev/todo-react/static/css/main.8726fae7.css.map",
-    "main.2897c12c.js.map": "/Wils0nDev/todo-react/static/js/main.2897c12c.js.map"
+    "main.css": "/todo-react/static/css/main.8726fae7.css",
+    "main.js": "/todo-react/static/js/main.fa89bef0.js",
+    "static/media/wilsondev4.jpg": "/todo-react/static/media/wilsondev4.6d6b2136ba4b3cd7670e.jpg",
+    "static/media/devimgdos.svg": "/todo-react/static/media/devimgdos.e7c4cc2402e33b7985866ed4d23f89cc.svg",
+    "index.html": "/todo-react/index.html",
+    "static/media/delete.svg": "/todo-react/static/media/delete.64cabedb850ec69635e23b23800e330f.svg",
+    "static/media/check.svg": "/todo-react/static/media/check.32e47e1ec32e6352ef563a10c26d840a.svg",
+    "main.8726fae7.css.map": "/todo-react/static/css/main.8726fae7.css.map",
+    "main.fa89bef0.js.map": "/todo-react/static/js/main.fa89bef0.js.map"
   },
   "entrypoints": [
     "static/css/main.8726fae7.css",
-    "static/js/main.2897c12c.js"
+    "static/js/main.fa89bef0.js"
   ]
 }
