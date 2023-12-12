@@ -8,27 +8,20 @@ import { TypeWork } from "../components/TypeWork";
 import { Modal } from "../components/UI/Modal/Modal";
 import { FormTodo } from "../components/FormTodo"
 import {TodosEmpty, TodosErrors,TodosLoading} from "../components/TodosMessage/index"
+import { TodoContext } from "../TodoContext";
+import devimg from "../assets/svg/devimgdos.svg";
 
-function AppUI({
-  setVisible,
-  devimg,
-  completedTodos,
-  totalTodos,
-  serchValue,
-  setSerchValue,
-  searchTodos,
-  completeTodo,
-  deletTodo,
-  visible,
-  loading,
-  error,
-  searchedTodos,
-}) {
+function AppUI() {
+  const {visible,addTodo} = React.useContext(TodoContext)
   return (
     <>
       <header>
         <nav className="container d-flex justify-content-between">
-          <CreateTodoButton setVisible={setVisible} />
+        <TodoContext.Consumer>
+          {({setVisible})=>(
+             <CreateTodoButton  setVisible={setVisible}/>
+          )}
+        </TodoContext.Consumer>
         </nav>
       </header>
       {/* "<></>" It's a way to render  a component without div  */}
@@ -43,10 +36,9 @@ function AppUI({
               <h2 className="description-profile">
                 Soy Programador <span> FullStack</span>
               </h2>
-              <TodoCounter
-                todosCompleted={completedTodos}
-                totalTodos={totalTodos}
-              />
+              {/* No enviamos parametros porque en el mismo componente ya los recibimos con el useContext
+               que tiene los parametros de manera global  en toda la aplicación*/}
+                 <TodoCounter />
             </div>
           </div>
 
@@ -75,42 +67,58 @@ function AppUI({
         {/* TodoCounter is our component for count the tasks completed and to do */}
         <section id="list" className="">
           <div className="container">
-            {/* TodoSearch is our component for search the tasks completed and to do */}
-
-            <TodoSearch serchValue={serchValue} setSerchValue={setSerchValue} />
-            {/* TodoList is our component for list the tasks completed and to do */}
-            <TodoList>
-              {loading && 
-              <>
-              <TodosLoading/>
-              <TodosLoading/>
-              <TodosLoading/>
-              </>}
-              {error &&  <TodosErrors />}
-              {!loading && searchedTodos.length === 0 && (
-                <TodosEmpty />
-              )}
-              {/* TodoItem is our component for show each the tasks*/}
-              {/* We traverse the list with map, to render a new list of components but with their properties */}
-              {searchedTodos.map((todo) => (
-                <TodoItem
-                  Item
-                  key={todo.text}
-                  text={todo.text}
-                  completed={todo.completed}
-                  onComplete={() => completeTodo(todo.text)}
-                  onDelete={() => deletTodo(todo.text)}
-                />
-              ))}
-            </TodoList>
+            {/* TodoSearch is our component for search the tasks completed and todo */}
+            {/* No enviamos parametros porque en el mismo componente ya los recibimos con el useContext
+               que tiene los parametros de manera global  en toda la aplicación*/}
+              <TodoSearch />
+            
+            {/*TodoContext.Consumer: siguen un patron de render que se llaman las render props */}
+            <TodoContext.Consumer>
+              {/* TodoList is our component for list the tasks completed and to do */}
+             {({
+             
+              completeTodo,
+              deletTodo,
+              loading,
+              error,
+              searchedTodos,
+             })=>(
+               <TodoList>
+               {loading && 
+               <>
+               <TodosLoading/>
+               <TodosLoading/>
+               <TodosLoading/>
+               </>}
+               {error &&  <TodosErrors />}
+               {!loading && searchedTodos.length === 0 && (
+                 <TodosEmpty />
+               )}
+               {/* TodoItem is our component for show each the tasks*/}
+               {/* We traverse the list with map, to render a new list of components but with their properties */}
+               {searchedTodos.map((todo) => (
+                 <TodoItem
+                   Item
+                   key={todo.text}
+                   text={todo.text}
+                   completed={todo.completed}
+                   onComplete={() => completeTodo(todo.text)}
+                   onDelete={() => deletTodo(todo.text)}
+                 />
+               ))}
+               </TodoList>
+             )}
+            </TodoContext.Consumer>
           </div>
         </section>
-        <Modal visible={visible}>
+        
+          <Modal visible={visible}>
           <FormTodo
-            setVisible={setVisible}
-            // CreateNewTask={CreateNewTask}
+            addTodo={addTodo}
           />
         </Modal>
+         
+        
       </main>
     </>
   );

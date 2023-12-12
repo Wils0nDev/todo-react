@@ -16,4 +16,8 @@ $color_focus: #262534;
 @mixin forTableScreens() {
     @media (min-width: 767px) { @content; }
 }
+
+@mixin forMovileScreens() {
+    @media (min-width : 400px) and (min-width : 766px)  { @content; }
+}
   

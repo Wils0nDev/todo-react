@@ -4,9 +4,8 @@
     position: fixed;
     display: block;
     background-color: #fff;
-    width: 50%;
-    height: 100vh;
-    right: 100px;
+    width: 40%;
+    left: 100%;
     transition: left 0.4s 0s ease-in;
     &.open {
         width: 100%;
@@ -25,4 +24,16 @@
             transition: left 0.4s 0s ease-in;
         }
     }
+
+    // @include forMovileScreens() {
+    //     width: 100%;
+    //     left: 100%;
+    //     transition: left 0.4s 0s ease-in;
+
+    //     &.open {
+    //         width: 100%;
+    //         left: 100%;
+    //         transition: left 0.4s 0s ease-in;
+    //     }
+    // }
 }

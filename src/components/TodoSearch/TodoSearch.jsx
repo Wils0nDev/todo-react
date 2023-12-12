@@ -1,10 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { TodoContext } from '../../TodoContext';
 import './TodoSearch.scss';
 
-function TodoSearch({serchValue,setSerchValue}){
+function TodoSearch(){
     
+    const {serchValue,setSerchValue} = React.useContext(TodoContext)
 
     const filterTodo=(event)=>{
         setSerchValue(event.target.value)

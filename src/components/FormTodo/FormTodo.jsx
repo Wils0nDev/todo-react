@@ -1,9 +1,9 @@
 import React from "react";
 import './FormTodo.scss';
+import { TodoContext } from "../../TodoContext";
 
-function FormTodo({
-    setVisible
-}){
+function FormTodo(){
+    const { setVisible,addTodo} = React.useContext(TodoContext)
     const [textValue, setTextValue] = React.useState('');
 
     const closeForm = () => {
@@ -11,8 +11,9 @@ function FormTodo({
         setVisible(false);
     }
 
-    const addTask = (event) => {
+    const newTodo = (event) => {
         event.preventDefault();
+        addTodo(textValue)
         setTextValue('');
         setVisible(false);
     }
@@ -20,7 +21,7 @@ function FormTodo({
     return (
         <section className="form-modal h-100 d-flex flex-column">
             <h1>Registra tu tarea</h1>
-            <form onSubmit={addTask} className="d-flex flex-column justify-content-between h-100">
+            <form onSubmit={newTodo} className="d-flex flex-column justify-content-between h-100">
                 <div>
                     <label htmlFor="text-task" className="form-label"></label>
                     <div className="input-group">
